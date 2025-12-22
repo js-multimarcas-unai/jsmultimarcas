@@ -131,8 +131,7 @@
     <p class="subtitle">O Melhor em Pods e Vapes • Unaí - MG</p>
 </header>
 
-<div class="container" id="lista-produtos">
-    </div>
+<div class="container" id="lista-produtos"></div>
 
 <footer>
     <div class="social">
@@ -179,11 +178,16 @@
         const saboresHtml = p.sabores.map(s => `<option>${s}</option>`).join('');
         container.innerHTML += `
             <div class="card">
-                <div class="img-box"><img src="${p.img}" onerror="this.src='https://via.placeholder.com/300x220/111/444?text=${p.nome.replace(/ /g, '+')}'"></div>
+                <div class="img-box">
+                    <img src="${p.img}" alt="${p.nome}">
+                </div>
                 <h3>${p.nome}</h3>
                 <div class="puffs">${p.puffs}</div>
                 <div class="price">R$ ${p.preco}</div>
-                <select class="flavor-sel"><option>Sabor Disponível:</option>${saboresHtml}</select>
+                <select class="flavor-sel">
+                    <option>Sabor Disponível:</option>
+                    ${saboresHtml}
+                </select>
                 <a href="https://wa.me/5531972092011?text=Olá!+Gostaria+de+pedir+o+${p.nome.replace(/ /g, '+')}" class="btn-buy" target="_blank">
                     <i class="fab fa-whatsapp"></i> CONFIRMAR PEDIDO
                 </a>
