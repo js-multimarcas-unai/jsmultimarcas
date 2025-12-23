@@ -58,7 +58,6 @@
             box-sizing: border-box;
         }
 
-        /* Estilo das Categorias Rápidas */
         .categories {
             display: flex;
             justify-content: center;
@@ -67,16 +66,14 @@
             flex-wrap: wrap;
         }
         .cat-btn {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid var(--primary-blue);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--primary-purple);
             color: white;
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.75rem;
+            padding: 6px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
             cursor: pointer;
-            transition: 0.3s;
         }
-        .cat-btn:active { background: var(--primary-blue); }
 
         .container {
             display: flex;
@@ -95,10 +92,9 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            position: relative; /* Para o selo funcionar */
+            position: relative;
         }
 
-        /* Estilo do Selo Mais Vendido */
         .badge {
             position: absolute;
             top: 10px;
@@ -110,7 +106,6 @@
             font-size: 0.7rem;
             font-weight: bold;
             text-transform: uppercase;
-            box-shadow: 0 2px 10px rgba(255,71,87,0.4);
             z-index: 5;
         }
 
@@ -151,6 +146,7 @@
             text-decoration: none;
             border: none;
             width: 100%;
+            cursor: pointer;
         }
 
         footer {
@@ -231,4 +227,62 @@
         { nome: "ELFBAR EW KIT 9K", puffs: "9 MIL💨", preco: "99,90", img: "ewkit.jpg", sabores: ["Melancia 🍉", "Pitaya Morango Banana 🐉🍓🍌", "Morango Laranja Abacaxi 🍓🍊🍍", "Cereja 🍒"] },
         { nome: "REFIL ELFBAR EW 9K", puffs: "9 MIL💨", preco: "79,90", img: "ewrefil9k.jpg", sabores: ["Blueberry Morango Ice 🫐🍓🧊", "Cereja Morango 🍒🍓"] },
         { nome: "REFIL ELFBAR EW 16K", puffs: "16 MIL💨", preco: "99,90", img: "ewrefil16k.jpg", sabores: ["Frutas Tropicais 🏝️", "Amora Blueberry 🍇🫐", "Maçã Verde Ice 🍏🧊"] },
-        { nome: "SEX ADDICT 28K", puffs: "28 MIL💨", preco: "119,90", img: "sexaddict.jpg", sabores: ["Melancia Ice 🍉🧊", "Morango Melancia Ice 🍓🍉🧊", "Banana Ice 🍌🧊", "Menta Ice 🌿🧊", "Uva Kiwi Ice 🍇🥝🧊
+        { nome: "SEX ADDICT 28K", puffs: "28 MIL💨", preco: "119,90", img: "sexaddict.jpg", sabores: ["Melancia Ice 🍉🧊", "Morango Melancia Ice 🍓🍉🧊", "Banana Ice 🍌🧊", "Menta Ice 🌿🧊", "Uva Kiwi Ice 🍇🥝🧊"], destaque: "Mais Vendido 🔥" },
+        { nome: "ELFBAR 23K", puffs: "23 MIL💨", preco: "109,90", img: "elf23k.jpg", sabores: ["Laranja Uva 🍊🍇"] },
+        { nome: "ELFBAR 30K", puffs: "30 MIL💨", preco: "114,90", img: "elf30k.jpg", sabores: ["Açaí Banana Ice 🫐🍌🧊", "Banana Coco 🍌🥥"] },
+        { nome: "ELFBAR 40K", puffs: "40 MIL💨", preco: "129,90", img: "elf40k.jpg", sabores: ["Blueberry Morango Ice 🫐🍓🧊", "Frutas Tropicais 🏝️", "Pêssego Ice 🍑🧊", "Manga Ice 🥭🧊"] },
+        { nome: "ICE KING SUMMER", puffs: "40 MIL💨", preco: "129,90", img: "summer.jpg", sabores: ["Coca Cola 🥤", "Pêssego Blueberry 🍑🫐", "Abacaxi Maracujá Goiaba 🍍🍋🍈", "Amora 🍇", "Morango 🍓", "Maçã Verde 🍏"] },
+        { nome: "ELFBAR TRIO 40K", puffs: "40 MIL💨", preco: "129,90", img: "trio.jpg", sabores: ["Abacaxi Laranja Ice 🍍🍊🧊", "Maçã Verde Ice 🍏🧊", "Blueberry Ice 🫐🧊", "Romã Ice 🍎🧊", "Pêssego 🍑"] },
+        { nome: "LIFE POD 10K", puffs: "10 MIL💨", preco: "129,90", img: "life10k.jpg", sabores: ["Menthol 🌿", "Menta Ice ❄️", "Love 66 ❤️", "Café Chocolate ☕🍫", "Pitaya Blueberry Morango 🐉🫐🍓", "Uva Mel 🍇🍯", "Água de Coco 🥥", "Chiclete Melancia 🍉🍬"] },
+        { nome: "REFIL LIFE POD 10K", puffs: "10 MIL💨", preco: "99,90", img: "liferefil.jpg", sabores: ["Menthol 🌿", "Menta Ice ❄️", "Love 66 ❤️", "Pitaya Blueberry Morango 🐉🫐🍓", "Uva Mel 🍇🍯", "Água de Coco 🥥", "Chiclete Melancia 🍉🍬"] },
+        { nome: "LIFE POD SK", puffs: "10 MIL💨", preco: "119,90", img: "lifesk.jpg", sabores: ["Blueberry Limão Ice 🫐🍋🧊", "Banana Ice 🍌🧊", "Menta Ice ❄️", "Morango Ice 🍓🧊", "Cereja Limonada 🍒🍋"] },
+        { nome: "LIFE POD 40K", puffs: "40 MIL💨", preco: "124,90", img: "life40k.jpg", sabores: ["Água de Coco 🥥", "Chiclete Cereja 🍒🍬", "Chiclete Frutas Vermelhas 🍓🍬"] }
+    ];
+
+    const container = document.getElementById('lista-produtos');
+
+    function renderizar(lista) {
+        container.innerHTML = '';
+        lista.forEach((p, index) => {
+            const badgeHtml = p.destaque ? `<div class="badge">${p.destaque}</div>` : '';
+            const saboresHtml = p.sabores.map(s => `<option value="${s}">${s}</option>`).join('');
+            container.innerHTML += `
+                <div class="card">
+                    ${badgeHtml}
+                    <div class="img-box"><img src="${p.img}" alt="${p.nome}"></div>
+                    <div class="puffs">${p.puffs}</div>
+                    <h3>${p.nome}</h3>
+                    <div class="price">R$ ${p.preco}</div>
+                    <select class="flavor-sel" id="sabor-${index}">
+                        <option value="Sabor não selecionado">Selecione o Sabor 👇</option>
+                        ${saboresHtml}
+                    </select>
+                    <button onclick="fazerPedido('${p.nome}', ${index})" class="btn-buy">CONFIRMAR PEDIDO</button>
+                </div>
+            `;
+        });
+    }
+
+    function filtrarProdutos() {
+        const termo = document.getElementById('search-input').value.toLowerCase();
+        const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
+        renderizar(filtrados);
+    }
+
+    function setSearch(marca) {
+        document.getElementById('search-input').value = marca;
+        filtrarProdutos();
+    }
+
+    function fazerPedido(nomePod, index) {
+        const saborSelect = document.getElementById(`sabor-${index}`);
+        const saborEscolhido = saborSelect.value;
+        const numWhats = "5531972092011";
+        const mensagem = `Olá! Gostaria de pedir o *${nomePod}* no sabor *${saborEscolhido}*.`;
+        window.open(`https://wa.me/${numWhats}?text=${encodeURIComponent(mensagem)}`, '_blank');
+    }
+
+    renderizar(produtos);
+</script>
+</body>
+</html>
