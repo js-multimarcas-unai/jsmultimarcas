@@ -58,6 +58,26 @@
             box-sizing: border-box;
         }
 
+        /* Estilo das Categorias Rápidas */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .cat-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--primary-blue);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cat-btn:active { background: var(--primary-blue); }
+
         .container {
             display: flex;
             flex-direction: column;
@@ -75,6 +95,23 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            position: relative; /* Para o selo funcionar */
+        }
+
+        /* Estilo do Selo Mais Vendido */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff4757;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(255,71,87,0.4);
+            z-index: 5;
         }
 
         .img-box {
@@ -114,7 +151,6 @@
             text-decoration: none;
             border: none;
             width: 100%;
-            cursor: pointer;
         }
 
         footer {
@@ -122,8 +158,11 @@
             padding: 30px;
             background: #000;
             font-size: 0.9rem;
-            color: #555;
+            color: #888;
         }
+
+        .footer-social { margin-bottom: 15px; }
+        .footer-social a { color: #fff; font-size: 1.8rem; margin: 0 15px; text-decoration: none; }
 
         .social-float {
             position: fixed;
@@ -149,6 +188,12 @@
     <h1 class="logo">JS MULTIMARCAS</h1>
     <div class="search-container">
         <input type="text" id="search-input" placeholder="🔍 Buscar modelo..." onkeyup="filtrarProdutos()">
+        <div class="categories">
+            <button class="cat-btn" onclick="setSearch('IGNITE')">IGNITE</button>
+            <button class="cat-btn" onclick="setSearch('ELFBAR')">ELFBAR</button>
+            <button class="cat-btn" onclick="setSearch('LIFE POD')">LIFE POD</button>
+            <button class="cat-btn" onclick="setSearch('LOSGAL')">LOSGAL</button>
+        </div>
     </div>
 </header>
 
@@ -159,6 +204,10 @@
 </a>
 
 <footer>
+    <div class="footer-social">
+        <a href="https://instagram.com/js_multimarcasunai" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5531972092011" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
     <p>© 2025 JS Multimarcas - Unaí/MG</p>
 </footer>
 
@@ -182,57 +231,4 @@
         { nome: "ELFBAR EW KIT 9K", puffs: "9 MIL💨", preco: "99,90", img: "ewkit.jpg", sabores: ["Melancia 🍉", "Pitaya Morango Banana 🐉🍓🍌", "Morango Laranja Abacaxi 🍓🍊🍍", "Cereja 🍒"] },
         { nome: "REFIL ELFBAR EW 9K", puffs: "9 MIL💨", preco: "79,90", img: "ewrefil9k.jpg", sabores: ["Blueberry Morango Ice 🫐🍓🧊", "Cereja Morango 🍒🍓"] },
         { nome: "REFIL ELFBAR EW 16K", puffs: "16 MIL💨", preco: "99,90", img: "ewrefil16k.jpg", sabores: ["Frutas Tropicais 🏝️", "Amora Blueberry 🍇🫐", "Maçã Verde Ice 🍏🧊"] },
-        { nome: "SEX ADDICT 28K", puffs: "28 MIL💨", preco: "119,90", img: "sexaddict.jpg", sabores: ["Melancia Ice 🍉🧊", "Morango Melancia Ice 🍓🍉🧊", "Banana Ice 🍌🧊", "Menta Ice 🌿🧊", "Uva Kiwi Ice 🍇🥝🧊"] },
-        { nome: "ELFBAR 23K", puffs: "23 MIL💨", preco: "109,90", img: "elf23k.jpg", sabores: ["Laranja Uva 🍊🍇"] },
-        { nome: "ELFBAR 30K", puffs: "30 MIL💨", preco: "114,90", img: "elf30k.jpg", sabores: ["Açaí Banana Ice 🫐🍌🧊", "Banana Coco 🍌🥥"] },
-        { nome: "ELFBAR 40K", puffs: "40 MIL💨", preco: "129,90", img: "elf40k.jpg", sabores: ["Blueberry Morango Ice 🫐🍓🧊", "Frutas Tropicais 🏝️", "Pêssego Ice 🍑🧊", "Manga Ice 🥭🧊"] },
-        { nome: "ICE KING SUMMER", puffs: "40 MIL💨", preco: "129,90", img: "summer.jpg", sabores: ["Coca Cola 🥤", "Pêssego Blueberry 🍑🫐", "Abacaxi Maracujá Goiaba 🍍🍋🍈", "Amora 🍇", "Morango 🍓", "Maçã Verde 🍏"] },
-        { nome: "ELFBAR TRIO 40K", puffs: "40 MIL💨", preco: "129,90", img: "trio.jpg", sabores: ["Abacaxi Laranja Ice 🍍🍊🧊", "Maçã Verde Ice 🍏🧊", "Blueberry Ice 🫐🧊", "Romã Ice 🍎🧊", "Pêssego 🍑"] },
-        { nome: "LIFE POD 10K", puffs: "10 MIL💨", preco: "129,90", img: "life10k.jpg", sabores: ["Menthol 🌿", "Menta Ice ❄️", "Love 66 ❤️", "Café Chocolate ☕🍫", "Pitaya Blueberry Morango 🐉🫐🍓", "Uva Mel 🍇🍯", "Água de Coco 🥥", "Chiclete Melancia 🍉🍬"] },
-        { nome: "REFIL LIFE POD 10K", puffs: "10 MIL💨", preco: "99,90", img: "liferefil.jpg", sabores: ["Menthol 🌿", "Menta Ice ❄️", "Love 66 ❤️", "Pitaya Blueberry Morango 🐉🫐🍓", "Uva Mel 🍇🍯", "Água de Coco 🥥", "Chiclete Melancia 🍉🍬"] },
-        { nome: "LIFE POD SK", puffs: "10 MIL💨", preco: "119,90", img: "lifesk.jpg", sabores: ["Blueberry Limão Ice 🫐🍋🧊", "Banana Ice 🍌🧊", "Menta Ice ❄️", "Morango Ice 🍓🧊", "Cereja Limonada 🍒🍋"] },
-        { nome: "LIFE POD 40K", puffs: "40 MIL💨", preco: "124,90", img: "life40k.jpg", sabores: ["Água de Coco 🥥", "Chiclete Cereja 🍒🍬", "Chiclete Frutas Vermelhas 🍓🍬"] }
-    ];
-
-    const container = document.getElementById('lista-produtos');
-
-    function renderizar(lista) {
-        container.innerHTML = '';
-        lista.forEach((p, index) => {
-            const saboresHtml = p.sabores.map(s => `<option value="${s}">${s}</option>`).join('');
-            container.innerHTML += `
-                <div class="card">
-                    <div class="img-box"><img src="${p.img}" alt="${p.nome}"></div>
-                    <div class="puffs">${p.puffs}</div>
-                    <h3>${p.nome}</h3>
-                    <div class="price">R$ ${p.preco}</div>
-                    <select class="flavor-sel" id="sabor-${index}">
-                        <option value="Sabor não selecionado">Selecione o Sabor 👇</option>
-                        ${saboresHtml}
-                    </select>
-                    <button onclick="fazerPedido('${p.nome}', ${index})" class="btn-buy">
-                        <i class="fab fa-whatsapp"></i> CONFIRMAR PEDIDO
-                    </button>
-                </div>
-            `;
-        });
-    }
-
-    function filtrarProdutos() {
-        const termo = document.getElementById('search-input').value.toLowerCase();
-        const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
-        renderizar(filtrados);
-    }
-
-    function fazerPedido(nomePod, index) {
-        const saborSelect = document.getElementById(`sabor-${index}`);
-        const saborEscolhido = saborSelect.value;
-        const numWhats = "5531972092011";
-        const mensagem = `Olá! Gostaria de pedir o *${nomePod}* no sabor *${saborEscolhido}*.`;
-        window.open(`https://wa.me/${numWhats}?text=${encodeURIComponent(mensagem)}`, '_blank');
-    }
-
-    renderizar(produtos);
-</script>
-</body>
-</html>
+        { nome: "SEX ADDICT 28K", puffs: "28 MIL💨", preco: "119,90", img: "sexaddict.jpg", sabores: ["Melancia Ice 🍉🧊", "Morango Melancia Ice 🍓🍉🧊", "Banana Ice 🍌🧊", "Menta Ice 🌿🧊", "Uva Kiwi Ice 🍇🥝🧊
