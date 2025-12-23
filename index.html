@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Multimarcas | Catálogo Profissional</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -25,13 +26,20 @@
 
         header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             background: rgba(0,0,0,0.5);
             border-bottom: 2px solid var(--primary-purple);
         }
 
+        /* Opção 3: Estilo da Logo */
+        .brand-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
         .logo {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
             background: linear-gradient(to right, #9d50bb, #6e48aa);
             -webkit-background-clip: text;
@@ -41,11 +49,35 @@
             letter-spacing: -1px;
         }
 
+        /* Opção 1: Estilo da Barra de Pesquisa */
+        .search-container {
+            max-width: 600px;
+            margin: 30px auto 10px;
+            padding: 0 20px;
+        }
+
+        #search-input {
+            width: 100%;
+            padding: 15px 25px;
+            border-radius: 30px;
+            border: 2px solid var(--primary-purple);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #search-input:focus {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+        }
+
         .subtitle { color: #888; font-size: 1.1rem; margin-top: 10px; }
 
         .container {
             max-width: 1400px;
-            margin: 40px auto;
+            margin: 20px auto;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
@@ -100,12 +132,13 @@
             border: 1px solid var(--primary-purple);
             margin-bottom: 15px;
             font-size: 0.9rem;
+            cursor: pointer;
         }
 
         .btn-buy {
             background: linear-gradient(45deg, var(--primary-purple), var(--primary-blue));
             color: #fff;
-            text-decoration: none;
+            border: none;
             padding: 14px;
             border-radius: 12px;
             font-weight: bold;
@@ -116,6 +149,9 @@
             gap: 8px;
             transition: 0.3s;
             font-size: 0.95rem;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
         }
 
         .btn-buy:hover { filter: brightness(1.2); }
@@ -127,8 +163,13 @@
 <body>
 
 <header>
+    <img src="logo.png" alt="JS Multimarcas Logo" class="brand-logo" onerror="this.style.display='none'">
     <h1 class="logo">JS MULTIMARCAS</h1>
     <p class="subtitle">O Melhor em Pods e Vapes • Unaí - MG</p>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Pesquisar modelo (ex: Ignite, Elfbar...)" onkeyup="filtrarProdutos()">
+    </div>
 </header>
 
 <div class="container" id="lista-produtos"></div>
@@ -136,7 +177,7 @@
 <footer>
     <div class="social">
         <a href="https://wa.me/5531972092011" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://instagram.com/jsmultimarcas_unai" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
     <p style="margin-top:20px; color:#555">© 2025 JS Multimarcas. Procedência Garantida.</p>
 </footer>
@@ -174,26 +215,50 @@
     ];
 
     const container = document.getElementById('lista-produtos');
-    produtos.forEach(p => {
-        const saboresHtml = p.sabores.map(s => `<option>${s}</option>`).join('');
-        container.innerHTML += `
-            <div class="card">
-                <div class="img-box">
-                    <img src="${p.img}" alt="${p.nome}">
+
+    function renderizar(lista) {
+        container.innerHTML = '';
+        lista.forEach((p, index) => {
+            const saboresHtml = p.sabores.map(s => `<option value="${s}">${s}</option>`).join('');
+            container.innerHTML += `
+                <div class="card">
+                    <div class="img-box">
+                        <img src="${p.img}" alt="${p.nome}">
+                    </div>
+                    <h3>${p.nome}</h3>
+                    <div class="puffs">${p.puffs}</div>
+                    <div class="price">R$ ${p.preco}</div>
+                    <select class="flavor-sel" id="sabor-${index}">
+                        <option value="Sabor não selecionado">Escolha o Sabor:</option>
+                        ${saboresHtml}
+                    </select>
+                    <button onclick="fazerPedido('${p.nome}', ${index})" class="btn-buy">
+                        <i class="fab fa-whatsapp"></i> CONFIRMAR PEDIDO
+                    </button>
                 </div>
-                <h3>${p.nome}</h3>
-                <div class="puffs">${p.puffs}</div>
-                <div class="price">R$ ${p.preco}</div>
-                <select class="flavor-sel">
-                    <option>Sabor Disponível:</option>
-                    ${saboresHtml}
-                </select>
-                <a href="https://wa.me/5531972092011?text=Olá!+Gostaria+de+pedir+o+${p.nome.replace(/ /g, '+')}" class="btn-buy" target="_blank">
-                    <i class="fab fa-whatsapp"></i> CONFIRMAR PEDIDO
-                </a>
-            </div>
-        `;
-    });
+            `;
+        });
+    }
+
+    // Opção 1: Função de Filtro
+    function filtrarProdutos() {
+        const termo = document.getElementById('search-input').value.toLowerCase();
+        const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
+        renderizar(filtrados);
+    }
+
+    // Opção 2: Função do WhatsApp
+    function fazerPedido(nomePod, index) {
+        const saborSelect = document.getElementById(`sabor-${index}`);
+        const saborEscolhido = saborSelect.value;
+        const numWhats = "5531972092011";
+        const mensagem = `Olá! Gostaria de pedir o *${nomePod}* no sabor *${saborEscolhido}*.`;
+        const url = `https://wa.me/${numWhats}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, '_blank');
+    }
+
+    // Inicializar o catálogo
+    renderizar(produtos);
 </script>
 </body>
 </html>
