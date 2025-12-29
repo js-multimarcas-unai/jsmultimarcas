@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JS Multimarcas | Catálogo</title>
+    <title>JS Multimarcas | Catálogo Completo</title>
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -100,25 +100,10 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #eb3b5a;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.65rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            z-index: 5;
-        }
-
         .img-box {
             width: 100%;
             height: 250px;
             background: #fff;
-            border-radius: 12px;
             margin-bottom: 15px;
             display: flex; align-items: center; justify-content: center;
         }
@@ -126,7 +111,7 @@
         .img-box img { max-width: 95%; max-height: 95%; object-fit: contain; }
 
         .puffs { color: var(--primary-blue); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
-        .card h3 { font-size: 1.3rem; margin: 5px 0; color: #333; font-weight: 800; }
+        .card h3 { font-size: 1.2rem; margin: 5px 0; color: #333; font-weight: 800; }
         .price { font-size: 1.7rem; font-weight: 900; color: var(--accent-green); margin: 10px 0; }
 
         .flavor-sel {
@@ -148,9 +133,9 @@
             font-weight: 700;
             text-align: center;
             font-size: 0.95rem;
-            text-decoration: none;
             border: none;
             width: 100%;
+            cursor: pointer;
         }
 
         footer {
@@ -160,9 +145,6 @@
             border-top: 1px solid #eee;
             color: #999;
         }
-
-        .footer-social { margin-bottom: 20px; }
-        .footer-social a { color: #333; font-size: 1.8rem; margin: 0 15px; text-decoration: none; }
 
         .social-float {
             position: fixed;
@@ -187,12 +169,12 @@
     <img src="logo.png" alt="" class="brand-logo" onerror="this.style.display='none'">
     <h1 class="logo">JS MULTIMARCAS</h1>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="O que você procura hoje? 🔍" onkeyup="filtrarProdutos()">
+        <input type="text" id="search-input" placeholder="Buscar modelo ou sabor... 🔍" onkeyup="filtrarProdutos()">
         <div class="categories">
             <button class="cat-btn" onclick="setSearch('IGNITE')">IGNITE</button>
-            <button class="cat-btn" onclick="setSearch('ELFBAR')">ELFBAR</button>
             <button class="cat-btn" onclick="setSearch('LIFE POD')">LIFE POD</button>
-            <button class="cat-btn" onclick="setSearch('LOSGAL')">LOSGAL</button>
+            <button class="cat-btn" onclick="setSearch('ELFBAR')">ELFBAR</button>
+            <button class="cat-btn" onclick="setSearch('SEX ADDICT')">SEX ADDICT</button>
         </div>
     </div>
 </header>
@@ -204,44 +186,39 @@
 </a>
 
 <footer>
-    <div class="footer-social">
-        <a href="https://instagram.com/js_multimarcasunai" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/5531972092011" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    </div>
     <p style="font-weight: 600; color: #555;">JS MULTIMARCAS - UNAÍ/MG</p>
-    <p style="font-size: 0.75rem; margin-top: 10px;">© 2025 Todos os direitos reservados.</p>
+    <p style="font-size: 0.75rem;">© 2025 Catálogo Digital</p>
 </footer>
 
 <script>
     const produtos = [
-        { nome: "LOSGAL 25K", puffs: "25 MIL💨", preco: "99,90", img: "losgal25k.jpg", sabores: ["Laranja 🍊 Manga 🥭 Goiaba 🍈", "Blueberry 🫐 Frutas Tropicais 🏝️", "Amora 🍇 Maçã 🍎"] },
-        { nome: "IGNITE V50", puffs: "5 MIL💨", preco: "89,90", img: "v50.jpg", sabores: ["Coca Cola Ice 🥤🧊"] },
-        { nome: "IGNITE V80", puffs: "8 MIL💨", preco: "99,90", img: "v80.jpg", sabores: ["Romã Açaí Framboesa 🫐", "Banana Cereja 🍌🍒", "Laranja Manga 🍊🥭", "Morango Kiwi 🍓🥝", "Uva Kiwi Menta 🍇🥝🌿"] },
-        { nome: "IGNITE V155", puffs: "15 MIL💨", preco: "109,90", img: "v155.jpg", sabores: ["Tropical Açaí 🌴", "Uva Ice 🍇🧊", "Morango Banana 🍓🍌", "Banana Ice 🍌🧊"] },
-        { nome: "IGNITE V120", puffs: "12 MIL💨", preco: "104,90", img: "v120.jpg", sabores: ["Abacaxi Ice 🍍🧊", "Menthol 🌿", "Maçã Verde 🍏"] },
-        { nome: "IGNITE V150 PRO", puffs: "15 MIL💨", preco: "109,90", img: "v150pro.jpg", sabores: ["Morango Kiwi 🍓🥝", "Maçã Verde 🍏", "Maçã Verde Pêssego Kiwi 🍏🍑🥝"] },
-        { nome: "IGNITE V250", puffs: "25 MIL💨", preco: "129,90", img: "v250.jpg", sabores: ["Chiclete Melancia 🍉🍬", "Banana Ice 🍌🧊", "Uva Gelada 🍇🧊"] },
-        { nome: "IGNITE V300", puffs: "30 MIL💨", preco: "139,90", img: "v300.jpg", sabores: ["Cactus e Refri de Limão 🌵🍋", "Morango Kiwi 🍓🥝", "Mentol 🌿", "Menta Gelada ❄️"] },
-        { nome: "IGNITE V400", puffs: "40 MIL💨", preco: "149,90", img: "v400.jpg", sabores: ["Morango Banana Ice 🍓🍌🧊", "Melancia Ice 🍉🧊", "Uva Ice 🍇🧊", "Pêssego 🍑", "Cereja Melancia Ice 🍒🍉🧊"] },
-        { nome: "IGNITE V400 MIX", puffs: "40 MIL💨", preco: "149,90", img: "v400mix.jpg", sabores: ["Morango Manga/Banana Ice 🍓🥭🍌🧊", "Abacaxi Manga/Morango Ice 🍍🥭🍓🧊", "Melão/Mentol 🍈🌿", "Uva/Melancia Ice 🍇🍉🧊", "Açaí/Melancia Uva Ice 🫐🍉🍇🧊"] },
-        { nome: "IGNITE V400 SWEET", puffs: "40 MIL💨", preco: "149,90", img: "v400sweet.jpg", sabores: ["Uva Ice 🍇🧊", "Banana Cereja 🍌🍒", "Pêssego Framboesa Ice 🍑🫐🧊", "Morango Banana 🍓🍌", "Chiclete Blueberry 🫐🍬"] },
-        { nome: "KIT IGNITE P100", puffs: "10 MIL💨", preco: "119,90", img: "p100kit.jpg", sabores: ["Uva Ice 🍇🧊", "Blueberry Ice 🫐🧊", "Maçã Verde 🍏"] },
-        { nome: "REFIL IGNITE P100", puffs: "10 MIL💨", preco: "99,90", img: "p100refil.jpg", sabores: ["Melancia Ice 🍉🧊", "Maçã Verde 🍏", "Uva Ice 🍇🧊", "Blueberry Ice 🫐🧊"] },
-        { nome: "ELF BAR BC 10K", puffs: "10 MIL💨", preco: "89,90", img: "elf10k.jpg", sabores: ["Kiwi Melancia Maçã 🥝🍉🍎", "Cereja Maçã Limão 🍒🍎🍋"] },
-        { nome: "ELFBAR ULTRA SLIM", puffs: "18 MIL💨", preco: "99,90", img: "ultraslim.jpg", sabores: ["Morango Melancia 🍓🍉", "Blueberry Gelado 🫐🧊", "Chiclete de Menta 🌿🍬", "Manga Ice 🥭🧊", "Uva Framboesa 🍇🫐", "Duas Maçãs 🍎🍏"] },
-        { nome: "ELFBAR EW KIT 9K", puffs: "9 MIL💨", preco: "99,90", img: "ewkit.jpg", sabores: ["Melancia 🍉", "Pitaya Morango Banana 🐉🍓🍌", "Morango Laranja Abacaxi 🍓🍊🍍", "Cereja 🍒"] },
-        { nome: "REFIL ELFBAR EW 9K", puffs: "9 MIL💨", preco: "79,90", img: "ewrefil9k.jpg", sabores: ["Blueberry Morango Ice 🫐🍓🧊", "Cereja Morango 🍒🍓"] },
-        { nome: "REFIL ELFBAR EW 16K", puffs: "16 MIL💨", preco: "99,90", img: "ewrefil16k.jpg", sabores: ["Frutas Tropicais 🏝️", "Amora Blueberry 🍇🫐", "Maçã Verde Ice 🍏🧊"] },
-        { nome: "SEX ADDICT 28K", puffs: "28 MIL💨", preco: "119,90", img: "sexaddict.jpg", sabores: ["Melancia Ice 🍉🧊", "Morango Melancia Ice 🍓🍉🧊", "Banana Ice 🍌🧊", "Menta Ice 🌿🧊", "Uva Kiwi Ice 🍇🥝🧊"], destaque: "Mais Vendido 🔥" },
-        { nome: "ELFBAR 23K", puffs: "23 MIL💨", preco: "109,90", img: "elf23k.jpg", sabores: ["Laranja Uva 🍊🍇"] },
-        { nome: "ELFBAR 30K", puffs: "30 MIL💨", preco: "114,90", img: "elf30k.jpg", sabores: ["Açaí Banana Ice 🫐🍌🧊", "Banana Coco 🍌🥥"] },
-        { nome: "ELFBAR 40K", puffs: "40 MIL💨", preco: "129,90", img: "elf40k.jpg", sabores: ["Blueberry Morango Ice 🫐🍓🧊", "Frutas Tropicais 🏝️", "Pêssego Ice 🍑🧊", "Manga Ice 🥭🧊"] },
-        { nome: "ICE KING SUMMER", puffs: "40 MIL💨", preco: "129,90", img: "summer.jpg", sabores: ["Coca Cola 🥤", "Pêssego Blueberry 🍑🫐", "Abacaxi Maracujá Goiaba 🍍🍋🍈", "Amora 🍇", "Morango 🍓", "Maçã Verde 🍏"] },
-        { nome: "ELFBAR TRIO 40K", puffs: "40 MIL💨", preco: "129,90", img: "trio.jpg", sabores: ["Abacaxi Laranja Ice 🍍🍊🧊", "Maçã Verde Ice 🍏🧊", "Blueberry Ice 🫐🧊", "Romã Ice 🍎🧊", "Pêssego 🍑"] },
-        { nome: "LIFE POD 10K", puffs: "10 MIL💨", preco: "129,90", img: "life10k.jpg", sabores: ["Menthol 🌿", "Menta Ice ❄️", "Love 66 ❤️", "Café Chocolate ☕🍫", "Pitaya Blueberry Morango 🐉🫐🍓", "Uva Mel 🍇🍯", "Água de Coco 🥥", "Chiclete Melancia 🍉🍬"] },
-        { nome: "REFIL LIFE POD 10K", puffs: "10 MIL💨", preco: "99,90", img: "liferefil.jpg", sabores: ["Menthol 🌿", "Menta Ice ❄️", "Love 66 ❤️", "Pitaya Blueberry Morango 🐉🫐🍓", "Uva Mel 🍇🍯", "Água de Coco 🥥", "Chiclete Melancia 🍉🍬"] },
-        { nome: "LIFE POD SK", puffs: "10 MIL💨", preco: "119,90", img: "lifesk.jpg", sabores: ["Blueberry Limão Ice 🫐🍋🧊", "Banana Ice 🍌🧊", "Menta Ice ❄️", "Morango Ice 🍓🧊", "Cereja Limonada 🍒🍋"] },
-        { nome: "LIFE POD 40K", puffs: "40 MIL💨", preco: "124,90", img: "life40k.jpg", sabores: ["Água de Coco 🥥", "Chiclete Cereja 🍒🍬", "Chiclete Frutas Vermelhas 🍓🍬"] }
+        { nome: "IGNITE V80", puffs: "8 MIL💨", preco: "99,90", img: "v80.jpg", sabores: ["Bluberry💜 Limonada🍋", "Tangerina🍊 Laranja🍊 Menta💚", "Romã🍎 Açaí🟣 Framboesa❤️", "Banana🍌 Cereja🍒", "Açaí🟣 Ice❄️", "Laranja🍊 Manga🥭", "Morango🍓 Ice❄️", "Menta💚 Ice❄️", "Maçã🍏 Verde", "Bluberry💜 Ice❄️", "Melancia🍉 Ice❄️", "Morango🍓️Kiwi🥝", "Uva🍇Ice❄️", "Uva🍇Kiwi🥝Menta💚"] },
+        { nome: "IGNITE V155", puffs: "15 MIL💨", preco: "109,90", img: "v155.jpg", sabores: ["Tropical🌴💜Açaí", "Morango🍓Kiwi🥝", "Morango🍓Banana🍌", "Melancia🍉Ice🧊", "Banana🍌Ice🧊", "Menta💚Ice🧊", "Melancia🍉Ice🧊"] },
+        { nome: "IGNITE V120", puffs: "12 MIL💨", preco: "104,90", img: "v120.jpg", sabores: ["Uva🍇Ice🧊", "🍋🍊 Limão Laranja", "Café ☕", "Maçã🍏Verde"] },
+        { nome: "IGNITE V150 PRO", puffs: "15 MIL💨", preco: "109,90", img: "v150pro.jpg", sabores: ["Menthol❄️", "Maçã🍏 Verde", "Uva🍇 Verde🍏", "Menta💚 Ice❄️", "Maçã Verde🍏Pêssego🍑Kiwi🥝", "Uva🍇Ice🧊"] },
+        { nome: "IGNITE V250", puffs: "25 MIL💨", preco: "129,90", img: "v250.jpg", sabores: ["Uva🍇 Gelada🧊", "Mentol💚", "Menta💚Ice🧊", "Confir"] },
+        { nome: "IGNITE V300", puffs: "30 MIL💨", preco: "139,90", img: "v300.jpg", sabores: ["🌵🍋 Cactus e Refri de Limão", "Bluberry💜Morango🍓Coco🥥", "Morango🍓Ice🧊", "💚🍈 Menta e Melão", "🍌🥥 Banana Água de Coco", "🍓🥝 Morango e Kiwi", "🍓🍌 Morango e Banana", "Mentol💚", "Banana🍌 Gelada🧊", "Menta💚 Gelada🧊", "Uva🍇 Gelada🧊", "Pitaya💖 com Melancia🍉", "Maçã🍏Verde", "Chiclete🍬Melancia🍉"] },
+        { nome: "IGNITE V400", puffs: "40 MIL💨", preco: "149,90", img: "v400.jpg", sabores: ["Morango🍓 Banana🍌 Gelada🧊", "Cereja🍒Melancia🍉Ice🧊"] },
+        { nome: "IGNITE V400 MIX", puffs: "40 MIL💨", preco: "149,90", img: "v400mix.jpg", sabores: ["Chiclete🍬 de Uva🍇Pêssego🍑 Gelado🧊", "Morango🍓 Manga🥭/ Banana🍌 Gelada🧊", "Abacaxi🍍 Manga🥭/ Morango🍓 Gelado🧊", "Maracujá💛 Kiwi🥝/ Abacaxi🍍 Gelado🧊", "Melão🍈/ Mentol💚", "Banana🍌 Gelada🧊/ Morango🍓 Gelado🧊", "Maçã🍏 Gelada🧊/ Morango🍓 Melancia🍉", "Manga🥭 Gelada🧊/ Maracujá💛 Goiaba🍈", "Uva🍇 Gelada🧊/ Melancia🍉 Gelada🧊", "Pêssego🍑 Melancia🍉/ Manga🥭 Gelada🧊", "Melancia🍉 Uva🍇 Ice / Açaí💜 Ice", "Menta💚 Ice / Pêssego🍑 Uva🍇", "Uva🍇 Ice / Morango🍓", "Melancia🍉 Ice / Cereja🍒 Ice", "Laranja🍊 Ice / Morango🍓 Ice", "Bluberry💜 Ice / Amora🖤 Framboesa❤️", "Morango🍓 Melancia🍉 Ice / Uva🍇"] },
+        { nome: "IGNITE V400 SWEET", puffs: "40 MIL💨", preco: "149,90", img: "v400sweet.jpg", sabores: ["🍌🍒 Banana Cereja", "🍏 Maçã Verde", "🍑❤️❄️ Pêssego Framboesa Ice", "Bluberry💜Ice🧊", "Chiclete🍬Bluberry💙"] },
+        { nome: "P100 KIT", puffs: "10 MIL💨", preco: "119,90", img: "p100kit.jpg", sabores: ["Blueberry💜Ice🧊", "🍏 Maçã Verde"] },
+        { nome: "P100 REFIL", puffs: "10 MIL💨", preco: "99,90", img: "p100refil.jpg", sabores: ["Maçã Verde🍏", "Blueberry💜Ice🧊"] },
+        { nome: "ELF BAR ULTRA SLIM", puffs: "18 MIL💨", preco: "99,90", img: "ultraslim.jpg", sabores: ["Morango🍓 Melancia🍉", "Bluberry💜 Gelado❄️", "Chiclete de Ment💚", "Manga🥭 Ice❄️", "Melancia🍉 Menta💚", "Uva🍇 Framboesa❤️", "Duas Maçãs🍎🍏"] },
+        { nome: "ELFBAR EW KIT 9K", puffs: "9 MIL💨", preco: "99,90", img: "ewkit.jpg", sabores: ["🍉 Melancia", "🍒🍓 Cereja Morango", "🍒 Cereja", "🥭🍑❄️ Manga Pêssego Ice"] },
+        { nome: "REFIL EW 9K", puffs: "9 MIL💨", preco: "79,90", img: "ewrefil9k.jpg", sabores: ["💜🍓❄️ Bluberry Morango Ice", "🍒🍓 Cereja Morango"] },
+        { nome: "REFIL EW 16K", puffs: "16 MIL💨", preco: "99,90", img: "ewrefil16k.jpg", sabores: ["🍇💜 Amora Bluberry", "Maçã🍏Verde💚Gelada🧊"] },
+        { nome: "ELFBAR 23K", puffs: "23 MIL💨", preco: "109,90", img: "elf23k.jpg", sabores: ["Bluberry💜Morango🍓Ice🧊", "Menta💚Ice🧊", "Bluberry💜Frutas Tropicais🍍🥭🥝", "Pêra🍐Bluberry💙", "Uva🍇"] },
+        { nome: "ELFBAR 30K", puffs: "30 MIL💨", preco: "114,90", img: "elf30k.jpg", sabores: ["Menta💚 Melancia🍉 Melão🍈", "Açaí🫐 Banana🍌 Ice❄️", "Café☕ Ice❄️", "Coco🥥 Morango🍓 Ice❄️", "Banana🍌Coco🥥", "Uva🍇Limonada🍋Ice🧊", "Melancia🍉Limonada🍋Ice🧊"] },
+        { nome: "ELFBAR 40K", puffs: "40 MIL💨", preco: "129,90", img: "elf40k.jpg", sabores: ["Bluberry💜Morango🍓Ice🧊", "Frutas Tropicais🍍🥭🥝", "Bluberry💜 Frutas Tropicais🍍🥭🥝", "Manga🥭Ice🧊"] },
+        { nome: "ICE KING SUMMER", puffs: "40 MIL💨", preco: "129,90", img: "summer.jpg", sabores: ["Coca Cola🥤 Refrescante❄️", "Pêssego🍑 Bluberry💜 Refrescante❄️", "Amora🫐 Refrescante❄️", "Cereja Tripla🍒", "Maçã Verde🍏 Refrescante❄️"] },
+        { nome: "ELFBAR TRIO 40K", puffs: "40 MIL💨", preco: "129,90", img: "trio.jpg", sabores: ["Abacaxi🍍Laranja🍊Ice🧊", "Maçã🍏Verde Ice🧊", "Bluberry💜 Ice🧊", "Pêssego🍑"] },
+        { nome: "LIFE POD 10K", puffs: "10 MIL💨", preco: "129,90", img: "life10k.jpg", sabores: ["Menthol💚", "Menta💚Ice🧊", "Maracujá💛Ice🧊", "Miami Mint💚", "Amora🖤 Ice🧊", "Menta Suave💚", "Café☕ com Chocolate🍫", "Pitaya❤️Bluberry💜Morango🍓", "Uva🍇Mel🍯", "Água de Coco🥥", "Pitaya❤️Ice🧊", "Chiclete🍬Melancia🍉", "Pêssego🍑Framboesa🍓", "Kiwi🥝Framboesa❤️", "Chiclete🍬Menta💚", "Chiclete🍬Bluberry💜", "Banana🍌Ice🧊", "Bluberry💜Maracujá💛Menta💚", "Bluberry💜Menta💚", "Morango🍓Melancia🍉", "Melancia🍉Pêssego🍑Ice🧊"] },
+        { nome: "REFIL LIFE POD 10K", puffs: "10 MIL💨", preco: "99,90", img: "liferefil.jpg", sabores: ["Menthol💚", "Menta💚Ice🧊", "Miami Mint💚", "Amora🖤 Ice🧊", "Maracujá💛Ice🧊", "Menta Suave💚", "Café☕ com Chocolate🍫", "Pitaya❤️Bluberry💜Morango🍓", "Uva🍇Mel🍯", "Água de Coco🥥", "Pitaya❤️Ice🧊", "Chiclete🍬Melancia🍉", "Pêssego🍑Framboesa🍓", "Kiwi🥝Framboesa❤️", "Chiclete🍬Menta💚", "Chiclete🍬Bluberry💜", "Banana🍌Ice🧊", "Bluberry💜Maracujá💛Menta💚", "Bluberry💜Menta💚", "Melancia🍉Pêssego🍑Ice🧊"] },
+        { nome: "LIFE POD SK", puffs: "10 MIL💨", preco: "119,90", img: "lifesk.jpg", sabores: ["Bluberry💜Limão🍋‍🟩Ice🧊", "Morango🍓 Kiwi🥝Ice🧊", "Maçã Verde🍏 Ice🧊", "Manga🥭 Ice🧊", "Bluberry Limão Ice", "Sorvete🍨 de Morango🍓", "Menta💚Ice🧊", "Morango🍓 Ice🧊", "Energético⚡Monster", "Cereja🍒Limonada🍋", "Morango🍓Melancia🍉Ice🧊"] },
+        { nome: "SEX ADDICT 28K", puffs: "28 MIL💨", preco: "119,90", img: "sexaddict.jpg", sabores: ["Menta💚Ice🧊", "Melancia🍉Ice🧊", "Uva🍇Kiwi🥝Ice🧊", "Morango🍓Melancia🍉Ice🧊", "Morango🍓Banana🍌Ice🧊", "Melancia🍉Uva🍇Ice🧊", "Uva🍇Açaí💜Ice🧊", "Menthol💚", "Morango🍓Ice🧊"] },
+        { nome: "IGNITE V55 ULTRA SLIM", puffs: "5.5 MIL💨", preco: "89,90", img: "v55.jpg", sabores: ["Menta💚Ice🧊", "Uva🍇Verde💚", "Morango🍓Melancia🍉", "Melancia🍉Ice🧊", "Uva🍇Ice🧊", "Morango🍓Kiwi🥝", "Morango🍓Banana🍌", "Uva🍇Maçã🍎Açaí🫐", "Menta💚Doce🍬"] },
+        { nome: "VAPE SOUL 20K ULTRA", puffs: "20 MIL💨", preco: "79,90", img: "vapesoul.jpg", sabores: ["Menta💚 Melancia🍉", "Uva🍇 Framboesa❤️ Limão🍋", "Manga🥭 Ice❄️", "Framboesa❤️ Uva🍇", "Menta💚 Ice❄️", "Maracujá💛 Uva🍇"] },
+        { nome: "NIK BAR 10K", puffs: "10 MIL💨", preco: "79,90", img: "nikbar.jpg", sabores: ["💚❄️ Menthol", "🍇❄️ Uva Ice", "🍉❄️ Melancia Ice", "🍏❄️ Maçã Verde Ice", "💜❄️ Bluberry e Framboesa❤️ Ice"] }
     ];
 
     const container = document.getElementById('lista-produtos');
@@ -249,12 +226,10 @@
     function renderizar(lista) {
         container.innerHTML = '';
         lista.forEach((p, index) => {
-            const badgeHtml = p.destaque ? `<div class="badge">${p.destaque}</div>` : '';
             const saboresHtml = p.sabores.map(s => `<option value="${s}">${s}</option>`).join('');
             container.innerHTML += `
                 <div class="card">
-                    ${badgeHtml}
-                    <div class="img-box"><img src="${p.img}" alt="${p.nome}"></div>
+                    <div class="img-box"><img src="${p.img}" alt="${p.nome}" onerror="this.src='logo.png'"></div>
                     <div class="puffs">${p.puffs}</div>
                     <h3>${p.nome}</h3>
                     <div class="price">R$ ${p.preco}</div>
@@ -270,7 +245,7 @@
 
     function filtrarProdutos() {
         const termo = document.getElementById('search-input').value.toLowerCase();
-        const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
+        const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo) || p.sabores.some(s => s.toLowerCase().includes(termo)));
         renderizar(filtrados);
     }
 
