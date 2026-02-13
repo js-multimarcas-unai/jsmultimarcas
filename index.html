@@ -8,8 +8,8 @@
     <style>
         :root {
             --amarelo-forte: #FFFF00;
-            --fundo-base: #ffffff; /* Fundo Branco solicitado */
-            --preto-card: #000000; /* Cartão Preto solicitado */
+            --fundo-base: #ffffff;
+            --preto-card: #000000;
         }
 
         body {
@@ -46,11 +46,40 @@
         .logo-img { height: 40px; width: 40px; border-radius: 5px; }
         .logo-text { font-size: 1.2rem; font-weight: 900; color: var(--amarelo-forte); text-transform: uppercase; }
 
-        .search-box { position: relative; max-width: 500px; margin: 15px auto 0; padding: 0 10px; }
+        .search-box { position: relative; max-width: 500px; margin: 15px auto 10px; padding: 0 10px; }
         .search-box i { position: absolute; left: 25px; top: 50%; transform: translateY(-50%); color: var(--amarelo-forte); }
         .search-box input {
             width: 100%; padding: 12px 15px 12px 45px; border-radius: 25px;
             border: 2px solid #333; background: #000; color: white; outline: none; box-sizing: border-box;
+        }
+
+        /* ATALHOS DE MARCAS */
+        .shortcuts {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px;
+            flex-wrap: wrap;
+            background: #f4f4f4;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .btn-shortcut {
+            background: var(--preto-card);
+            color: var(--amarelo-forte);
+            border: 1px solid var(--amarelo-forte);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-shortcut:hover {
+            background: var(--amarelo-forte);
+            color: #000;
         }
 
         .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; }
@@ -66,10 +95,8 @@
         }
 
         .card img { max-width: 100%; height: 180px; object-fit: contain; margin-bottom: 10px; background: #fff; border-radius: 10px; }
-        
         .puffs { color: var(--amarelo-forte); font-weight: bold; font-size: 0.8rem; display: block; margin-bottom: 5px; }
         .price { font-size: 1.8rem; font-weight: 900; color: #20bf6b; margin: 10px 0; }
-        
         .flavor-select { width: 100%; padding: 12px; background: #fff; color: #000; border-radius: 8px; margin-bottom: 15px; font-weight: bold; border:none; }
         .btn-add { width: 100%; padding: 15px; background: var(--amarelo-forte); color: #000; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; }
 
@@ -81,10 +108,9 @@
         .modal-content { max-width: 500px; margin: 0 auto; background: #000; padding: 25px; border-radius: 15px; border: 2px solid var(--amarelo-forte); color: #fff; }
         .modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
         .item-cart { background: #222; padding: 10px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
-        
         .form-label { display: block; margin: 15px 0 5px; color: var(--amarelo-forte); font-weight: bold; }
         .form-input { width: 100%; padding: 12px; background: #111; color: white; border: 1px solid #444; border-radius: 8px; box-sizing: border-box; margin-bottom: 10px; }
-        .btn-send { width: 100%; padding: 18px; background: #25d366; color: white; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; font-size: 1.1rem; width: 100%; }
+        .btn-send { width: 100%; padding: 18px; background: #25d366; color: white; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -103,9 +129,17 @@
     </div>
     <div class="search-box">
         <i class="fas fa-search"></i>
-        <input type="text" id="input-busca" placeholder="Pesquisar pod ou sabor..." onkeyup="filtrar()">
+        <input type="text" id="input-busca" placeholder="O que você procura?" onkeyup="filtrar()">
     </div>
 </header>
+
+<div class="shortcuts">
+    <button class="btn-shortcut" onclick="atalho('IGNITE')">🔥 IGNITE</button>
+    <button class="btn-shortcut" onclick="atalho('ELFBAR')">💨 ELFBAR</button>
+    <button class="btn-shortcut" onclick="atalho('LIFE POD')">🔋 LIFE POD</button>
+    <button class="btn-shortcut" onclick="atalho('SEX ADDICT')">🔞 SEX ADDICT</button>
+    <button class="btn-shortcut" onclick="atalho('')">TODOS</button>
+</div>
 
 <div class="container" id="grid-produtos"></div>
 
@@ -154,4 +188,16 @@
         { nome: "ELFBAR 40K", puffs: "40 MIL💨", preco: "129,90", img: "elf40k.jpg", sabores: ["Bluberry💜Morango🍓Ice🧊", "Frutas Tropicais🍍🥭🥝", "Bluberry💜 Frutas Tropicais🍍🥭🥝", "Manga🥭Ice🧊"] },
         { nome: "ICE KING SUMMER", puffs: "40 MIL💨", preco: "129,90", img: "summer.jpg", sabores: ["Coca Cola🥤 Refrescante❄️", "Pêssego🍑 Bluberry💜 Refrescante❄️", "Amora🫐 Refrescante❄️", "Cereja Tripla🍒", "Maçã Verde🍏 Refrescante❄️"] },
         { nome: "ELFBAR TRIO 40K", puffs: "40 MIL💨", preco: "129,90", img: "trio.jpg", sabores: ["Abacaxi🍍Laranja🍊Ice🧊", "Maçã🍏Verde Ice🧊", "Bluberry💜 Ice🧊", "Pêssego🍑"] },
-        { nome: "LIFE POD 10K", puffs: "10 MIL💨", preco: "129,90", img: "life10k.jpg", sabores: ["Menthol💚", "Menta💚Ice🧊", "Maracujá💛Ice🧊", "Miami Mint💚", "Amora🖤 Ice🧊", "Menta Suave💚", "Café☕ com Chocolate🍫", "Pitaya❤️Bluberry💜Morango🍓", "Uva🍇Mel🍯", "Água de Coco🥥", "Pitaya❤️Ice🧊", "Chiclete🍬Melancia🍉", "Pêssego🍑Framboesa🍓", "Kiwi🥝Framboesa❤️", "Chiclete🍬Menta💚", "Chiclete🍬Bluberry💜", "Banana🍌Ice🧊", "Bluberry💜Maracujá💛Menta💚", "Bluberry💜Menta💚", "Morango🍓Melancia🍉", "Melancia🍉Pêsse
+        { nome: "LIFE POD 10K", puffs: "10 MIL💨", preco: "129,90", img: "life10k.jpg", sabores: ["Menthol💚", "Menta💚Ice🧊", "Maracujá💛Ice🧊", "Miami Mint💚", "Amora🖤 Ice🧊", "Menta Suave💚", "Café☕ com Chocolate🍫", "Pitaya❤️Bluberry💜Morango🍓", "Uva🍇Mel🍯", "Água de Coco🥥", "Pitaya❤️Ice🧊", "Chiclete🍬Melancia🍉", "Pêssego🍑Framboesa🍓", "Kiwi🥝Framboesa❤️", "Chiclete🍬Menta💚", "Chiclete🍬Bluberry💜", "Banana🍌Ice🧊", "Bluberry💜Maracujá💛Menta💚", "Bluberry💜Menta💚", "Morango🍓Melancia🍉", "Melancia🍉Pêssego🍑Ice🧊"] },
+        { nome: "REFIL LIFE POD 10K", puffs: "10 MIL💨", preco: "99,90", img: "liferefil.jpg", sabores: ["Menthol💚", "Menta💚Ice🧊", "Miami Mint💚", "Amora🖤 Ice🧊", "Maracujá💛Ice🧊", "Menta Suave💚", "Café☕ com Chocolate🍫", "Pitaya❤️Bluberry💜Morango🍓", "Uva🍇Mel🍯", "Água de Coco🥥", "Pitaya❤️Ice🧊", "Chiclete🍬Melancia🍉", "Pêssego🍑Framboesa🍓", "Kiwi🥝Framboesa❤️", "Chiclete🍬Menta💚", "Chiclete🍬Bluberry💜", "Banana🍌Ice🧊", "Bluberry💜Maracujá💛Menta💚", "Bluberry💜Menta💚", "Melancia🍉Pêssego🍑Ice🧊"] },
+        { nome: "LIFE POD SK", puffs: "10 MIL💨", preco: "119,90", img: "lifesk.jpg", sabores: ["Bluberry💜Limão🍋‍🟩Ice🧊", "Morango🍓 Kiwi🥝Ice🧊", "Maçã Verde🍏 Ice🧊", "Manga🥭 Ice🧊", "Bluberry Limão Ice", "Sorvete🍨 de Morango🍓", "Menta💚Ice🧊", "Morango🍓 Ice🧊", "Energético⚡Monster", "Cereja🍒Limonada🍋", "Morango🍓Melancia🍉Ice🧊"] },
+        { nome: "SEX ADDICT 28K", puffs: "28 MIL💨", preco: "119,90", img: "sexaddict.jpg", sabores: ["Menta💚Ice🧊", "Melancia🍉Ice🧊", "Uva🍇Kiwi🥝Ice🧊", "Morango🍓Melancia🍉Ice🧊", "Morango🍓Banana🍌Ice🧊", "Melancia🍉Uva🍇Ice🧊", "Uva🍇Açaí💜Ice🧊", "Menthol💚", "Morango🍓Ice🧊"] },
+        { nome: "IGNITE V55 ULTRA SLIM", puffs: "5.5 MIL💨", preco: "89,90", img: "v55.jpg", sabores: ["Menta💚Ice🧊", "Uva🍇Verde💚", "Morango🍓Melancia🍉", "Melancia🍉Ice🧊", "Uva🍇Ice🧊", "Morango🍓Kiwi🥝", "Morango🍓Banana🍌", "Uva🍇Maçã🍎Açaí🫐", "Menta💚Doce🍬"] },
+        { nome: "VAPE SOUL 20K ULTRA", puffs: "20 MIL💨", preco: "79,90", img: "vapesoul.jpg", sabores: ["Menta💚 Melancia🍉", "Uva🍇 Framboesa❤️ Limão🍋", "Manga🥭 Ice❄️", "Framboesa❤️ Uva🍇", "Menta💚 Ice❄️", "Maracujá💛 Uva🍇"] },
+        { nome: "NIK BAR 10K", puffs: "10 MIL💨", preco: "79,90", img: "nikbar.jpg", sabores: ["💚❄️ Menthol", "🍇❄️ Uva Ice", "🍉❄️ Melancia Ice", "🍏❄️ Maçã Verde Ice", "💜❄️ Bluberry e Framboesa❤️ Ice"] }
+    ];
+
+    let carrinho = [];
+
+    function carregar(lista) {
+        const grid
