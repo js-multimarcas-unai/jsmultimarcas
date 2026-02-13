@@ -8,14 +8,15 @@
     <style>
         :root {
             --amarelo-forte: #FFFF00;
-            --fundo-base: #ffffff;
-            --preto-card: #000000;
+            --fundo-base: #ffffff; /* Fundo Branco solicitado */
+            --preto-card: #000000; /* Cartão Preto solicitado */
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
             background-color: var(--fundo-base);
             margin: 0; padding: 0;
+            color: #000;
         }
 
         header {
@@ -60,7 +61,7 @@
             padding: 20px; 
             text-align: center; 
             color: #fff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
             border: 2px solid #000;
         }
 
@@ -72,7 +73,6 @@
         .flavor-select { width: 100%; padding: 12px; background: #fff; color: #000; border-radius: 8px; margin-bottom: 15px; font-weight: bold; border:none; }
         .btn-add { width: 100%; padding: 15px; background: var(--amarelo-forte); color: #000; border: none; border-radius: 10px; font-weight: 900; cursor: pointer; text-transform: uppercase; }
 
-        /* MODAL */
         #cart-modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(255,255,255,0.95); z-index: 2000; overflow-y: auto; padding: 20px; box-sizing: border-box;
@@ -107,8 +107,7 @@
     </div>
 </header>
 
-<div class="container" id="grid-produtos">
-    </div>
+<div class="container" id="grid-produtos"></div>
 
 <div id="cart-modal">
     <div class="modal-content">
@@ -134,7 +133,6 @@
 </div>
 
 <script>
-    // AQUI ESTÁ A SUA LISTA COMPLETA COM TODOS OS 27 MODELOS
     const produtos = [
         { nome: "IGNITE V80", puffs: "8 MIL💨", preco: "99,90", img: "v80.jpg", sabores: ["Bluberry💜 Limonada🍋", "Tangerina🍊 Laranja🍊 Menta💚", "Romã🍎 Açaí🟣 Framboesa❤️", "Banana🍌 Cereja🍒", "Açaí🟣 Ice❄️", "Laranja🍊 Manga🥭", "Morango🍓 Ice❄️", "Menta💚 Ice❄️", "Maçã🍏 Verde", "Bluberry💜 Ice❄️", "Melancia🍉 Ice❄️", "Morango🍓️Kiwi🥝", "Uva🍇Ice❄️", "Uva🍇Kiwi🥝Menta💚"] },
         { nome: "IGNITE V155", puffs: "15 MIL💨", preco: "109,90", img: "v155.jpg", sabores: ["Tropical🌴💜Açaí", "Morango🍓Kiwi🥝", "Morango🍓Banana🍌", "Melancia🍉Ice🧊", "Banana🍌Ice🧊", "Menta💚Ice🧊", "Melancia🍉Ice🧊"] },
@@ -156,81 +154,4 @@
         { nome: "ELFBAR 40K", puffs: "40 MIL💨", preco: "129,90", img: "elf40k.jpg", sabores: ["Bluberry💜Morango🍓Ice🧊", "Frutas Tropicais🍍🥭🥝", "Bluberry💜 Frutas Tropicais🍍🥭🥝", "Manga🥭Ice🧊"] },
         { nome: "ICE KING SUMMER", puffs: "40 MIL💨", preco: "129,90", img: "summer.jpg", sabores: ["Coca Cola🥤 Refrescante❄️", "Pêssego🍑 Bluberry💜 Refrescante❄️", "Amora🫐 Refrescante❄️", "Cereja Tripla🍒", "Maçã Verde🍏 Refrescante❄️"] },
         { nome: "ELFBAR TRIO 40K", puffs: "40 MIL💨", preco: "129,90", img: "trio.jpg", sabores: ["Abacaxi🍍Laranja🍊Ice🧊", "Maçã🍏Verde Ice🧊", "Bluberry💜 Ice🧊", "Pêssego🍑"] },
-        { nome: "LIFE POD 10K", puffs: "10 MIL💨", preco: "129,90", img: "life10k.jpg", sabores: ["Menthol💚", "Menta💚Ice🧊", "Maracujá💛Ice🧊", "Miami Mint💚", "Amora🖤 Ice🧊", "Menta Suave💚", "Café☕ com Chocolate🍫", "Pitaya❤️Bluberry💜Morango🍓", "Uva🍇Mel🍯", "Água de Coco🥥", "Pitaya❤️Ice🧊", "Chiclete🍬Melancia🍉", "Pêssego🍑Framboesa🍓", "Kiwi🥝Framboesa❤️", "Chiclete🍬Menta💚", "Chiclete🍬Bluberry💜", "Banana🍌Ice🧊", "Bluberry💜Maracujá💛Menta💚", "Bluberry💜Menta💚", "Morango🍓Melancia🍉", "Melancia🍉Pêssego🍑Ice🧊"] },
-        { nome: "REFIL LIFE POD 10K", puffs: "10 MIL💨", preco: "99,90", img: "liferefil.jpg", sabores: ["Menthol💚", "Menta💚Ice🧊", "Miami Mint💚", "Amora🖤 Ice🧊", "Maracujá💛Ice🧊", "Menta Suave💚", "Café☕ com Chocolate🍫", "Pitaya❤️Bluberry💜Morango🍓", "Uva🍇Mel🍯", "Água de Coco🥥", "Pitaya❤️Ice🧊", "Chiclete🍬Melancia🍉", "Pêssego🍑Framboesa🍓", "Kiwi🥝Framboesa❤️", "Chiclete🍬Menta💚", "Chiclete🍬Bluberry💜", "Banana🍌Ice🧊", "Bluberry💜Maracujá💛Menta💚", "Bluberry💜Menta💚", "Melancia🍉Pêssego🍑Ice🧊"] },
-        { nome: "LIFE POD SK", puffs: "10 MIL💨", preco: "119,90", img: "lifesk.jpg", sabores: ["Bluberry💜Limão🍋‍🟩Ice🧊", "Morango🍓 Kiwi🥝Ice🧊", "Maçã Verde🍏 Ice🧊", "Manga🥭 Ice🧊", "Bluberry Limão Ice", "Sorvete🍨 de Morango🍓", "Menta💚Ice🧊", "Morango🍓 Ice🧊", "Energético⚡Monster", "Cereja🍒Limonada🍋", "Morango🍓Melancia🍉Ice🧊"] },
-        { nome: "SEX ADDICT 28K", puffs: "28 MIL💨", preco: "119,90", img: "sexaddict.jpg", sabores: ["Menta💚Ice🧊", "Melancia🍉Ice🧊", "Uva🍇Kiwi🥝Ice🧊", "Morango🍓Melancia🍉Ice🧊", "Morango🍓Banana🍌Ice🧊", "Melancia🍉Uva🍇Ice🧊", "Uva🍇Açaí💜Ice🧊", "Menthol💚", "Morango🍓Ice🧊"] },
-        { nome: "IGNITE V55 ULTRA SLIM", puffs: "5.5 MIL💨", preco: "89,90", img: "v55.jpg", sabores: ["Menta💚Ice🧊", "Uva🍇Verde💚", "Morango🍓Melancia🍉", "Melancia🍉Ice🧊", "Uva🍇Ice🧊", "Morango🍓Kiwi🥝", "Morango🍓Banana🍌", "Uva🍇Maçã🍎Açaí🫐", "Menta💚Doce🍬"] },
-        { nome: "VAPE SOUL 20K ULTRA", puffs: "20 MIL💨", preco: "79,90", img: "vapesoul.jpg", sabores: ["Menta💚 Melancia🍉", "Uva🍇 Framboesa❤️ Limão🍋", "Manga🥭 Ice❄️", "Framboesa❤️ Uva🍇", "Menta💚 Ice❄️", "Maracujá💛 Uva🍇"] },
-        { nome: "NIK BAR 10K", puffs: "10 MIL💨", preco: "79,90", img: "nikbar.jpg", sabores: ["💚❄️ Menthol", "🍇❄️ Uva Ice", "🍉❄️ Melancia Ice", "🍏❄️ Maçã Verde Ice", "💜❄️ Bluberry e Framboesa❤️ Ice"] }
-    ];
-
-    let carrinho = [];
-
-    function carregar(lista) {
-        const grid = document.getElementById('grid-produtos');
-        grid.innerHTML = '';
-        lista.forEach((p) => {
-            const indexOriginal = produtos.findIndex(item => item.nome === p.nome);
-            grid.innerHTML += `
-                <div class="card">
-                    <img src="${p.img}" onerror="this.src='logo.png'">
-                    <span class="puffs">${p.puffs}</span>
-                    <h3 style="margin:5px 0;">${p.nome}</h3>
-                    <div class="price">R$ ${p.preco}</div>
-                    <select class="flavor-select" id="s-${indexOriginal}">
-                        ${p.sabores.map(s => `<option value="${s}">${s}</option>`).join('')}
-                    </select>
-                    <button class="btn-add" onclick="add(${indexOriginal})">Adicionar no Carrinho</button>
-                </div>
-            `;
-        });
-    }
-
-    function add(idx) {
-        const p = produtos[idx];
-        const s = document.getElementById(`s-${idx}`).value;
-        carrinho.push({ nome: p.nome, sabor: s, preco: p.preco });
-        document.getElementById('cart-count').innerText = carrinho.length;
-        alert("Adicionado: " + p.nome);
-    }
-
-    function abrirCarrinho() {
-        if(carrinho.length === 0) return alert("Carrinho vazio!");
-        const div = document.getElementById('lista-carrinho');
-        div.innerHTML = '';
-        let total = 0;
-        carrinho.forEach((item, i) => {
-            total += parseFloat(item.preco.replace(',', '.'));
-            div.innerHTML += `<div class="item-cart"><span>${item.nome} (${item.sabor})</span> <button onclick="remover(${i})" style="color:red; background:none; border:none; cursor:pointer;">X</button></div>`;
-        });
-        div.innerHTML += `<div style="text-align:right; font-weight:bold; color:var(--amarelo-forte);">TOTAL: R$ ${total.toFixed(2).replace('.', ',')}</div>`;
-        document.getElementById('cart-modal').style.display = 'block';
-    }
-
-    function fecharCarrinho() { document.getElementById('cart-modal').style.display = 'none'; }
-
-    function remover(i) {
-        carrinho.splice(i, 1);
-        document.getElementById('cart-count').innerText = carrinho.length;
-        if(carrinho.length === 0) fecharCarrinho(); else abrirCarrinho();
-    }
-
-    function finalizar() {
-        const n = document.getElementById('c-nome').value;
-        const e = document.getElementById('c-end').value;
-        if(!n || !e) return alert("Preencha nome e endereço!");
-        let m = `*PEDIDO DH MULTIPRODUTOS*\n\n*Cliente:* ${n}\n*Endereço:* ${e}\n\n*ITENS:*\n`;
-        carrinho.forEach(item => m += `- ${item.nome} (${item.sabor})\n`);
-        window.open("https://wa.me/5531972092011?text=" + encodeURIComponent(m));
-    }
-
-    function filtrar() {
-        const t = document.getElementById('input-busca').value.toLowerCase();
-        carregar(produtos.filter(p => p.nome.toLowerCase().includes(t)));
-    }
-
-    carregar(produtos);
-</script>
-</body>
-</html>
+        { nome: "LIFE POD 10K", puffs: "10 MIL💨", preco: "129,90", img: "life10k.jpg", sabores: ["Menthol💚", "Menta💚Ice🧊", "Maracujá💛Ice🧊", "Miami Mint💚", "Amora🖤 Ice🧊", "Menta Suave💚", "Café☕ com Chocolate🍫", "Pitaya❤️Bluberry💜Morango🍓", "Uva🍇Mel🍯", "Água de Coco🥥", "Pitaya❤️Ice🧊", "Chiclete🍬Melancia🍉", "Pêssego🍑Framboesa🍓", "Kiwi🥝Framboesa❤️", "Chiclete🍬Menta💚", "Chiclete🍬Bluberry💜", "Banana🍌Ice🧊", "Bluberry💜Maracujá💛Menta💚", "Bluberry💜Menta💚", "Morango🍓Melancia🍉", "Melancia🍉Pêsse
